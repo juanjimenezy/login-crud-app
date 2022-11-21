@@ -42,7 +42,8 @@ const Header = () => {
                         <NavItem active={false}>
                             <NavLink href="/Login" style={{ display: email !== null ? "none" : "block" }}>Login</NavLink>
                             <NavLink href="/Register" style={{ display: email !== null ? "none" : "block" }}>Register</NavLink>
-                            <NavLink href="/Crud" style={{ display: email === null ? "none" : "block" }}>Formulario</NavLink>
+                            <NavLink href="/NuevoRegistro" style={{ display: email === null ? "none" : "block" }}>Ingresar Datos</NavLink>
+                            <NavLink href="/Detalle" style={{ display: email === null ? "none" : "block" }}>Consultar</NavLink>
                             <NavLink onClick={() => logout()} style={{ display: email === null ? "none" : "block", color: "indianred" }}>Salir</NavLink>
                         </NavItem>
                     </Nav>

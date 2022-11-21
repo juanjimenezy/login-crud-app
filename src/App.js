@@ -7,7 +7,8 @@ import Home from './components/Home';
 import Header from './components/Header';
 import Login from './components/Login';
 import Register from './components/Register';
-import Crud from './components/CrudComponent/Crud';
+import Detalle from './components/CrudComponent/Detalle';
+import NuevoRegistro from './components/CrudComponent/NuevoRegistro';
 
 function App() {
 
@@ -18,7 +19,8 @@ function App() {
         <Route path="/" element={<><Home /> </>}></Route>
         <Route path="/Login" element={<><Login /></>}></Route>
         <Route path="/Register" element={<><Register /></>}></Route>
-        <Route path="/Crud" element={<><Crud /></>}></Route>
+        <Route path="/Detalle" element={<><Detalle /></>}></Route>
+        <Route path="/NuevoRegistro" element={<><NuevoRegistro /></>}></Route>
       </Routes>
     </>
   );

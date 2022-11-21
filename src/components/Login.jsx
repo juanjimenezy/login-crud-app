@@ -15,7 +15,7 @@ function Login() {
         try {
             const response = await loginFirebase(registro);
             console.log(response);
-            navigate('/Crud');
+            navigate('/Detalle');
         } catch (error) {
             console.log(error);
         }

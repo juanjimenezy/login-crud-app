@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from '../../firebase/config';
 import { obtenerDatos, eliminarDatos, editarDato } from '../../firebase/FirestoreServices'
 
-const Crud = () => {
+const Detalle = () => {
     const [email, setEmail] = useState(null);
     const navigate = useNavigate();
     const [lista, setLista] = React.useState([]);
@@ -16,7 +16,6 @@ const Crud = () => {
         auth.onAuthStateChanged(user => {
             if (user) {
                 setEmail(user.email);
-                //console.log(email);
             } else {
                 navigate('/Login')
             }
@@ -104,7 +103,6 @@ const Crud = () => {
                 <ModalBody>
                     <FormGroup>
                         <label>Categoria Principal: </label>
-                        {/* <input className="form-control" name="categoriaPrincipal" type="text" onChange={handleChange} value={regEdit.categoriaPrincipal} required /> */}
                         <select name="categoriaPrincipal" className='form-select' onChange={handleChange} value={regEdit.categoriaPrincipal} required>
                             <option value="MANTENIMIENTO INMUEBLES">MANTENIMIENTO INMUEBLES</option>
                             <option value="MANTENIMIENTO MUEBLES" selected>MANTENIMIENTO MUEBLES</option>
@@ -114,7 +112,6 @@ const Crud = () => {
 
                     <FormGroup>
                         <label>Tipo Servicio:</label>
-                        {/* <input className="form-control" name="tipoServicio" type="text" onChange={handleChange} value={regEdit.tipoServicio} required /> */}
                         <select name="tipoServicio" className='form-select' onChange={handleChange} value={regEdit.tipoServicio} required>
                             <option value="ASEO">ASEO</option>
                             <option value="TRANSPORTE" selected>TRANSPORTE</option>
@@ -148,4 +145,4 @@ const Crud = () => {
     )
 }
 
-export default Crud;
+export default Detalle;
