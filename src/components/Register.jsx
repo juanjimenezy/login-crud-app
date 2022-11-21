@@ -8,6 +8,7 @@ function Register() {
 
     const [registro, setRegistro] = React.useState({ email: "", password: "" });
     const navigate = useNavigate();
+    const [errorLogin, setErrorLogin] = React.useState({error: false, message: ""});
 
     const registrar = React.useCallback(async () => {
         try {
@@ -15,6 +16,7 @@ function Register() {
             console.log(response);
             navigate('/Login');
         } catch (error) {
+            setErrorLogin({error: true, message: error.message});
             console.log(error);
         }
         
@@ -34,9 +36,12 @@ function Register() {
         <>
             <div className="my-4 justify-content-center d-flex align-items-center">
                 <Card className="col-md-2 shadow-lg">
-                    <CardHeader>
+                    <CardHeader className='bg-dark text-light text-center'>
                         <h3>Register</h3>
                     </CardHeader>
+                    {errorLogin.error?<div class="alert alert-danger my-2" role="alert">
+                        {errorLogin.message}
+                    </div>:<></> }
 
                     <CardBody>
                         <FormGroup>

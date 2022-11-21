@@ -8,6 +8,7 @@ const Detalle = () => {
     const [email, setEmail] = useState(null);
     const navigate = useNavigate();
     const [lista, setLista] = React.useState([]);
+    
 
     const [actualizar, setActualizar] = React.useState(false);
     const [regEdit, setRegEdit] = React.useState({ id: "", categoriaPrincipal: "", tipoServicio: "", DescripcionSolicitud: "", ubicacionEmpresa: "", fecha: "" });
@@ -20,6 +21,8 @@ const Detalle = () => {
                 navigate('/Login')
             }
         });
+        //let userStr = localStorage.getItem('usuario');
+        console.log(JSON.parse(localStorage.getItem('usuario')));
         getDatos();
     }, [navigate, email]);
 
@@ -79,7 +82,7 @@ const Detalle = () => {
                         </thead>
 
                         <tbody>
-                            {lista.map((dato, key) => (
+                            {lista.map((dato, key) => ( email ===dato.usuario?
                                 <tr key={key}>
                                     <td>{dato.categoriaPrincipal}</td>
                                     <td>{dato.tipoServicio}</td>
@@ -90,7 +93,7 @@ const Detalle = () => {
                                         {" "}
                                         <Button className="btn-sm" color='danger' onClick={() => eliminarDato(dato.id)}><i className="bi bi-trash"></i></Button></td>
                                 </tr>
-                            ))}
+                            :<></>))}
                         </tbody>
                     </Table>
                 </div>

@@ -1,27 +1,29 @@
 import React from 'react';
 import { Card, CardHeader, CardBody, Form, FormGroup, Button } from "reactstrap";
-//import { auth } from '../firebase/config';
 import { useNavigate } from "react-router-dom";
 import { loginFirebase } from '../firebase/AuthServices';
 
 
 
 function Login() {
-    const [registro, setRegistro] = React.useState({email: "", password: "" });
+    const [registro, setRegistro] = React.useState({ email: "", password: "" });
     const navigate = useNavigate();
+    const [errorLogin, setErrorLogin] = React.useState(false);
 
 
     const logear = React.useCallback(async () => {
         try {
             const response = await loginFirebase(registro);
             console.log(response);
+            localStorage.setItem('usuario', JSON.stringify(response));
             navigate('/Detalle');
         } catch (error) {
+            setErrorLogin(true);
             console.log(error);
         }
-        
 
-    }, [registro,navigate]);
+
+    }, [registro, navigate]);
 
     const handleChange = (e) => {
         setRegistro({
@@ -34,9 +36,13 @@ function Login() {
         <>
             <div className="my-4 justify-content-center d-flex align-items-center">
                 <Card className="col-md-2 shadow-lg">
-                    <CardHeader>
+                    <CardHeader className='text-center bg-dark text-light'>
                         <h3>Login</h3>
                     </CardHeader>
+
+                    {errorLogin?<div class="alert alert-danger my-2" role="alert">
+                        Usuario o contraseña incorrectos!
+                    </div>:<div></div> }
 
                     <CardBody>
                         <Form>

@@ -22,13 +22,14 @@ export const eliminarDatos = async (id) => {
   }
 };
 
-export const guardarDatos = async (registro) => {
+export const guardarDatos = async (registro,email) => {
   const newUser = {
     categoriaPrincipal: registro.categoriaPrincipal,
     tipoServicio: registro.tipoServicio,
     DescripcionSolicitud: registro.DescripcionSolicitud,
     ubicacionEmpresa: registro.ubicacionEmpresa,
-    fecha: registro.fecha
+    fecha: registro.fecha,
+    usuario: email
   };
   try {
     const dato = await db.collection(collectionName).add(newUser);

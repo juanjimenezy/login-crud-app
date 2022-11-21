@@ -28,7 +28,7 @@ const NuevoRegistro = () => {
 
     const guardarDato = async (e) => {
         e.preventDefault();
-        guardarDatos(registro);
+        guardarDatos(registro,email);
         limpiar();
     };
 
@@ -41,11 +41,11 @@ const NuevoRegistro = () => {
 
         <Container className="my-2">
             <Card>
-                <CardHeader>
+                <CardHeader className="bg-dark text-light text-center">
                     <div><h3>Ingresar Registro</h3></div>
                 </CardHeader>
 
-                <CardBody>
+                <CardBody >
                     <Form onSubmit={guardarDato}>
                         <FormGroup>
                             <label>Categoria Principal: </label>

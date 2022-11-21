@@ -38,13 +38,13 @@ const Header = () => {
                 <Collapse isOpen={isOpen} navbar>
 
                     <Nav className="me-auto" navbar>
-                        <NavbarText style={{ color: 'aquamarine', textAlign: 'center' }}>Bienvenido {email}</NavbarText>
+                        <NavbarText style={{ color: 'moccasin', textAlign: 'center' }}>Bienvenido {email}</NavbarText>
                         <NavItem active={false}>
                             <NavLink href="/Login" style={{ display: email !== null ? "none" : "block" }}>Login</NavLink>
                             <NavLink href="/Register" style={{ display: email !== null ? "none" : "block" }}>Register</NavLink>
                             <NavLink href="/NuevoRegistro" style={{ display: email === null ? "none" : "block" }}>Ingresar Datos</NavLink>
                             <NavLink href="/Detalle" style={{ display: email === null ? "none" : "block" }}>Consultar</NavLink>
-                            <NavLink onClick={() => logout()} style={{ display: email === null ? "none" : "block", color: "indianred" }}>Salir</NavLink>
+                            <NavLink onClick={() => logout()} style={{ display: email === null ? "none" : "block", color: "indianred", cursor:"pointer" }}>Salir</NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>
