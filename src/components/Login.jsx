@@ -37,7 +37,7 @@ function Login() {
             <div className="my-4 justify-content-center d-flex align-items-center">
                 <Card className="col-md-2 shadow-lg">
                     <CardHeader className='text-center bg-dark text-light'>
-                        <h3>Login</h3>
+                        <h3> <i class="bi bi-person"> </i>Login</h3>
                     </CardHeader>
 
                     {errorLogin?<div class="alert alert-danger my-2" role="alert">
@@ -54,11 +54,11 @@ function Login() {
                                 <input id='password' type="password" className="form-control" name='password' placeholder='password' value={registro.password} onChange={handleChange} />
                             </FormGroup>
                             <div className='text-center'>
-                                <Button color='success' onClick={() => logear()}>Ingresar</Button>
+                                <Button color='success' onClick={() => logear()}><i class="bi bi-arrow-right-square"> Ingresar</i></Button>
                             </div>
 
                             <div className='text-center'>
-                                <a className='my-1 btn btn-primary' href='/Register' >Registrarse</a>
+                                <a className='my-1 btn btn-primary' href='/Register'><i class="bi bi-person-add"> Registrarse</i></a>
                             </div>
                         </Form>
                     </CardBody>

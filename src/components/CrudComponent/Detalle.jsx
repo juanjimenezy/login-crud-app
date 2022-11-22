@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { Container, Table, Button, Modal, ModalHeader, ModalBody, FormGroup, ModalFooter } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { auth } from '../../firebase/config';
-import { obtenerDatos, eliminarDatos, editarDato } from '../../firebase/FirestoreServices'
+import { obtenerDatos, eliminarDatos, editarDato, tipoServicio } from '../../firebase/FirestoreServices';
+
 
 const Detalle = () => {
     const [email, setEmail] = useState(null);
     const navigate = useNavigate();
     const [lista, setLista] = React.useState([]);
     
-
     const [actualizar, setActualizar] = React.useState(false);
     const [regEdit, setRegEdit] = React.useState({ id: "", categoriaPrincipal: "", tipoServicio: "", DescripcionSolicitud: "", ubicacionEmpresa: "", fecha: "" });
+    const [eTipoServicio, setETipoServicio] = React.useState([{ id: "", nombre: "" }]);
 
     React.useEffect(() => {
         auth.onAuthStateChanged(user => {
@@ -21,8 +22,8 @@ const Detalle = () => {
                 navigate('/Login')
             }
         });
-        //let userStr = localStorage.getItem('usuario');
-        console.log(JSON.parse(localStorage.getItem('usuario')));
+
+        //console.log(JSON.parse(localStorage.getItem('usuario')));
         getDatos();
     }, [navigate, email]);
 
@@ -36,8 +37,26 @@ const Detalle = () => {
         getDatos();
     };
 
-    const handleChange = (e) => {
+    const handleChange = async(e) => {
         if (actualizar) setRegEdit({ ...regEdit, [e.target.name]: e.target.value, });
+        if (e.target.name === 'categoriaPrincipal') await getTipoServicios(e.target.value);
+    };
+
+    const getTipoServicios = async (e) => {
+        if (e === "MANTENIMIENTO INMUEBLES") {
+            const regs = await tipoServicio("inmueble");
+            setETipoServicio(regs);
+        }
+
+        if (e === "MANTENIMIENTO MUEBLES") {
+            const regs = await tipoServicio("mueble");
+            setETipoServicio(regs);
+        }
+
+        if (e === "SERVICIOS") {
+            const regs = await tipoServicio("servicio");
+            setETipoServicio(regs);
+        }
     };
 
     const editarElemento = async (e) => {
@@ -49,8 +68,9 @@ const Detalle = () => {
 
     };
 
-    const actualizarShowHide = (dato) => {
+    const actualizarShowHide = async(dato) => {
         setActualizar(!actualizar);
+        console.log(regEdit);
         if (dato) setRegEdit({
             id: dato.id,
             categoriaPrincipal: dato.categoriaPrincipal,
@@ -59,6 +79,8 @@ const Detalle = () => {
             ubicacionEmpresa: dato.ubicacionEmpresa,
             fecha: dato.fecha
         });
+
+        await getTipoServicios(dato.categoriaPrincipal);
     }
 
     const limpiar = () => {
@@ -116,9 +138,9 @@ const Detalle = () => {
                     <FormGroup>
                         <label>Tipo Servicio:</label>
                         <select name="tipoServicio" className='form-select' onChange={handleChange} value={regEdit.tipoServicio} required>
-                            <option value="ASEO">ASEO</option>
-                            <option value="TRANSPORTE" selected>TRANSPORTE</option>
-                            <option value="VIGILANCIA">VIGILANCIA</option>
+                        {eTipoServicio.map((dato, key) => (
+                                    <option key={key} value={dato.nombre}>{dato.nombre}</option>
+                                ))}
                         </select>
                     </FormGroup>
 

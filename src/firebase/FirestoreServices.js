@@ -52,3 +52,16 @@ export const editarDato = async (registro) => {
     console.log(error);
   }
 };
+
+
+export const tipoServicio = async (categoria) => {
+  try {
+    let dato = await db.collection(categoria).get();
+    //dato = await db.collection(categoria).get();
+    const docs = [];
+    dato.forEach((doc) => { docs.push({ ...doc.data(), id: doc.id }) });
+    return docs;
+  } catch (err) {
+    console.log(err);
+  }
+}

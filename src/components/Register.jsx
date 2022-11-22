@@ -37,7 +37,7 @@ function Register() {
             <div className="my-4 justify-content-center d-flex align-items-center">
                 <Card className="col-md-2 shadow-lg">
                     <CardHeader className='bg-dark text-light text-center'>
-                        <h3>Register</h3>
+                        <h3> <i class="bi bi-person-add"> </i>Register</h3>
                     </CardHeader>
                     {errorLogin.error?<div class="alert alert-danger my-2" role="alert">
                         {errorLogin.message}

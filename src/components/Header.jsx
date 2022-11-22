@@ -38,13 +38,13 @@ const Header = () => {
                 <Collapse isOpen={isOpen} navbar>
 
                     <Nav className="me-auto" navbar>
-                        <NavbarText style={{ color: 'moccasin', textAlign: 'center' }}>Bienvenido {email}</NavbarText>
+                        {email?<NavbarText style={{ color: 'moccasin', textAlign: 'center' }}><i class="bi bi-person"> {email}</i> </NavbarText>:<></>}`
                         <NavItem active={false}>
-                            <NavLink href="/Login" style={{ display: email !== null ? "none" : "block" }}>Login</NavLink>
-                            <NavLink href="/Register" style={{ display: email !== null ? "none" : "block" }}>Register</NavLink>
-                            <NavLink href="/NuevoRegistro" style={{ display: email === null ? "none" : "block" }}>Ingresar Datos</NavLink>
-                            <NavLink href="/Detalle" style={{ display: email === null ? "none" : "block" }}>Consultar</NavLink>
-                            <NavLink onClick={() => logout()} style={{ display: email === null ? "none" : "block", color: "indianred", cursor:"pointer" }}>Salir</NavLink>
+                            <NavLink href="/Login" style={{ display: email !== null ? "none" : "block" }}><i class="bi bi-arrow-right-square"> Ingresar</i></NavLink>
+                            <NavLink href="/Register" style={{ display: email !== null ? "none" : "block" }}><i class="bi bi-person-add"> Registrarse</i></NavLink>
+                            <NavLink href="/NuevoRegistro" style={{ display: email === null ? "none" : "block" }}><i class="bi bi-plus-circle"> Ingresar Datos</i></NavLink>
+                            <NavLink href="/Detalle" style={{ display: email === null ? "none" : "block" }}><i class="bi bi-search"> Consultar</i></NavLink>
+                            <NavLink onClick={() => logout()} style={{ display: email === null ? "none" : "block", color: "indianred", cursor:"pointer" }}><i class="bi bi-box-arrow-right"> Salir</i></NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>

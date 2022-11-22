@@ -18,4 +18,4 @@ export const getUserFirebase = () => {
 export const logoutFirebase = async() => {
     await auth.signOut();
     return;
-}
+};
