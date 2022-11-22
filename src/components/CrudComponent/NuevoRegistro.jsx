@@ -53,6 +53,7 @@ const NuevoRegistro = () => {
 
     const limpiar = () => {
         setRegistro({ categoriaPrincipal: "", tipoServicio: "", DescripcionSolicitud: "", ubicacionEmpresa: "", fecha: "" });
+        setETipoServicio([]);
     };
 
     const consultar = () => {

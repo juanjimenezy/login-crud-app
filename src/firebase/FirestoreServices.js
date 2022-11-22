@@ -64,4 +64,4 @@ export const tipoServicio = async (categoria) => {
   } catch (err) {
     console.log(err);
   }
-}
+};

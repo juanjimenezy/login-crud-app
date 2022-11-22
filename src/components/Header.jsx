@@ -40,6 +40,7 @@ const Header = () => {
                     <Nav className="me-auto" navbar>
                         {email?<NavbarText style={{ color: 'moccasin', textAlign: 'center' }}><i class="bi bi-person"> {email}</i> </NavbarText>:<></>}`
                         <NavItem active={false}>
+                            <NavLink href='/'><i class="bi bi-house"> Home</i></NavLink>
                             <NavLink href="/Login" style={{ display: email !== null ? "none" : "block" }}><i class="bi bi-arrow-right-square"> Ingresar</i></NavLink>
                             <NavLink href="/Register" style={{ display: email !== null ? "none" : "block" }}><i class="bi bi-person-add"> Registrarse</i></NavLink>
                             <NavLink href="/NuevoRegistro" style={{ display: email === null ? "none" : "block" }}><i class="bi bi-plus-circle"> Ingresar Datos</i></NavLink>
