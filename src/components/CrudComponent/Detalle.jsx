@@ -87,6 +87,14 @@ const Detalle = () => {
         setRegEdit({ id: "", categoriaPrincipal: "", tipoServicio: "", DescripcionSolicitud: "", ubicacionEmpresa: "", fecha: "" });
     };
 
+    const closeBtn = (
+        <button className="close" onClick={() => actualizarShowHide(null)} type="button">
+          &times;
+        </button>
+      );
+
+    
+
     return (
         <div className='my-2 text-center'>
             <Container>
@@ -122,7 +130,7 @@ const Detalle = () => {
             </Container>
 
             <Modal isOpen={actualizar}>
-                <ModalHeader>
+                <ModalHeader close={closeBtn}>
                     <div><h3>Editar Registro</h3></div>
                 </ModalHeader>
                 <ModalBody>
@@ -162,12 +170,12 @@ const Detalle = () => {
 
                 <ModalFooter>
                     <Button color="success" onClick={editarElemento} ><i className="bi bi-check-lg"></i></Button>
-                    <Button color="danger" onClick={() => actualizarShowHide(null)}><i className="bi bi-backspace-reverse"></i></Button>
+                    {/* <Button color="danger" onClick={() => actualizarShowHide(null)}><i className="bi bi-backspace-reverse"></i></Button> */}
                 </ModalFooter>
 
             </Modal>
         </div>
     )
-}
+};
 
 export default Detalle;

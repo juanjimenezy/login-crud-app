@@ -5,7 +5,7 @@ const collectionName = "informacion";
 export const obtenerDatos = async () => {
   try {
     let dato = await db.collection(collectionName).get();
-    dato = await db.collection(collectionName).get();
+    //dato = await db.collection(collectionName).get();
     const docs = [];
     dato.forEach((doc) => { docs.push({ ...doc.data(), id: doc.id }) });
     return docs;
